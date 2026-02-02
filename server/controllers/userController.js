@@ -85,6 +85,22 @@ export const login = async (req, res) => {
   }
 };
 
+// ===================== LOGIN =====================
+export const logout = async (req, res) => {
+     
+
+
+    res
+    .status(200)
+    .clearCookie("token")
+    .json({
+      success: true,
+
+      message: "Logout successful"});
+ 
+};
+
+
 // ===================== GET USER DATA =====================
 export const getUserData = async (req, res) => {
   try {

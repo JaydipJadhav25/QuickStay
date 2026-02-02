@@ -4,6 +4,7 @@ import "dotenv/config";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import connectCloudinary from "./config/cloudinary.js";
+import cookieParser from "cookie-parser"
 
 // Routes
 import userRouter from "./routes/userRoutes.js";
@@ -26,6 +27,7 @@ app.use(cors({
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({extended  :true}));
 
 // Root Route

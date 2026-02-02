@@ -12,7 +12,7 @@ export const axiosInstance = axios.create({
 //  Add request interceptor to attach token from localStorage if cookies not used
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authTokenDApp"); // your JWT or session token
+    const token = localStorage.getItem("token"); // your JWT or session token
     if (token) {
       config.headers.Authorization = `Bearer ${token}` || " "; 
     }

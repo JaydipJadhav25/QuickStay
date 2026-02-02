@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../asset/assets";
 // import { useAppContext } from "../context/AppContext.jsx";
 import useAuth from "../context/useAuth.js";
+import { toast} from "sonner"
+import { axiosInstance } from "../config/axiosIntances.js";
 
 const Navbar = () => {
   const navLinks = [
@@ -21,7 +23,7 @@ const Navbar = () => {
 
 
 
-   const {  username , role , isAuthenticated } = useAuth();
+   const {  username , role , isAuthenticated  , logout} = useAuth();
 
   useEffect(() => {
     setIsScrolled(location.pathname !== "/");
@@ -58,10 +60,21 @@ const Navbar = () => {
 
 
 
-  const handleLogout = () => {
-    
-    setIsProfileOpen(false);
+  const handleLogout = async() => {
+    try {
+
+     const res = await axiosInstance.get('/api/user/logout');
+      console.log("response : " , res);
+    toast.error("User Logout successfully! ")
+    logout();
     navigate("/"); 
+      
+    } catch (error) {
+      console.log("usr logout error : " , error);
+      toast.error("User Logout Error! ")
+    }finally {
+          setIsProfileOpen(false);
+    }
   };
 
   return (

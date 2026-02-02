@@ -4,7 +4,8 @@ import {
   signup,
   login,
   getUserData,
-  storeRecentSearchedCities
+  storeRecentSearchedCities,
+  logout
 } from "../controllers/userController.js";
 
 const userRouter = express.Router();
@@ -13,7 +14,10 @@ const userRouter = express.Router();
 userRouter.post('/signup', signup);
 userRouter.post('/login', login);
 
+
+
 // Protected routes
+userRouter.get("/logout" , protect , logout);
 userRouter.get('/', protect, getUserData);
 userRouter.post('/recent-cities', protect, storeRecentSearchedCities);
 
