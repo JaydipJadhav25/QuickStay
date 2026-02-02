@@ -1,0 +1,48 @@
+# Node modules
+node_modules/
+
+# Environment files (VERY IMPORTANT)
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Nodemon
+.nodemon.json
+
+# Build / dist
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Cache & temp
+.cache/
+.tmp/
+
+# Uploads (multer / cloudinary local files)
+uploads/
+
+# Database files (if any local db used)
+*.db
+*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# System
+.env.local
+.env.development
+.env.production
