@@ -86,7 +86,8 @@ const AddRoom = () => {
   };
 
   return (
-    <form onSubmit={onSubmitHandler} className="m-8">
+    <div className=''>
+         <form onSubmit={onSubmitHandler} className="m-8">
       <Title
         align="left"
         font="outfit"
@@ -179,6 +180,7 @@ const AddRoom = () => {
         {loading ? 'Adding Room...' : 'Add Room'}
       </button>
     </form>
+    </div>
   );
 };
 

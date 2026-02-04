@@ -1,10 +1,10 @@
 import React from 'react'
-import { data, Link, useNavigate } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 import { axiosInstance } from '../config/axiosIntances'
 import {toast} from "sonner"
 import useAuth from '../context/useAuth'
 
-const Login = () => {
+const AdminLogin = () => {
 
   const navigate = useNavigate()
 
@@ -16,16 +16,16 @@ const Login = () => {
   const {  login } = useAuth();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
 
-        const res = await axiosInstance.post('/api/user/login', formData);
+        const res = await axiosInstance.post('/api/admin/login', formData);
         console.log("data : " , res.data);
          login(res.data.user.email , res.data.user.role);
         localStorage.setItem("token",res.data.token);
 
-        toast.success("Sigin successful.")
+        toast.success("Sigin successful.");
         navigate("/");
         // alert();
 
@@ -45,7 +45,7 @@ const Login = () => {
       <div className='w-full flex justify-center items-center h-screen p-2.5'>
       <form onSubmit={handleSubmit} className="sm:w-[350px] w-full text-center border border-gray-300/60 rounded-2xl px-8">
       <h1 className="text-gray-900 text-3xl mt-10 font-medium">
-      login
+      Admin
       </h1>
 
       <p className="text-gray-500 text-sm mt-2">Please sign in to continue</p>
@@ -82,22 +82,12 @@ const Login = () => {
 
       <p
         onClick={() => setState(prev => prev === "login" ? "register" : "login")}
-        className="text-gray-500 text-sm mt-3 cursor-pointer"
+        className="text-gray-500 text-sm mt-3 mb-11 cursor-pointer"
       >
         {/* {state === "login" ? "?" : "Already have an account?"} */}
         Don't have an account
-       <Link to={"/signup"}>
-           <span className="text-indigo-500 hover:underline ml-1">click here</span>
-       </Link>
-      </p>
-
-          <p
-        className="text-gray-500 text-sm cursor-pointer"
-      >
-       
-        Login As
        <Link to={"/adminsignup"}>
-           <span className="text-indigo-500 hover:underline ml-1">Admin</span>
+           <span className="text-indigo-500 hover:underline ml-1">click here</span>
        </Link>
       </p>
     </form>
@@ -105,4 +95,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default AdminLogin;

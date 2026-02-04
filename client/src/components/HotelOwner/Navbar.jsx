@@ -128,11 +128,11 @@ const Navbar = () => {
             }}
             className="border px-4 py-1 rounded-full"
           >
-            { role !== "user" ? 'Dashboard' : 'List Your Hotel'}
+            { role !== "user" ? 'Dashboard' : ''}
           </button>
         )}
 
-        {!user && (
+        {!isAuthenticated && (
           <button
             onClick={() => {
               setIsMenuOpen(false);

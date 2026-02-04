@@ -16,6 +16,8 @@ import Signup from './pages/Signup';
 import { Toaster } from 'react-hot-toast';
 import { useAppContext } from './context/AppContext';
 import PrivateRoute from './components/PrivateRoute';
+import AdminLogin from './pages/AdminLogin';
+import AdminSIgnup from './pages/AdminSIgnup';
 
 const App = () => {
   const isOwnerPath = useLocation().pathname.includes("owner");
@@ -35,6 +37,9 @@ const App = () => {
           <Route path='/rooms/:id' element={<RoomDetails />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+
+          <Route path='/adminlogin' element={<AdminLogin/>} />
+          <Route path='/adminsignup' element={<AdminSIgnup/>} />
 
           {/* Protected User Route */}
           <Route path='/my-bookings' element={

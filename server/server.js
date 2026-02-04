@@ -11,6 +11,10 @@ import userRouter from "./routes/userRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
 import roomRouter from "./routes/roomRoutes.js";
 import bookingRouter from "./routes/bookingsRoutes.js";
+import adminRouter  from "./routes/adminRoutes.js"
+
+
+
 
 // Connect Database & Cloudinary
 connectDB();
@@ -34,7 +38,11 @@ app.use(express.urlencoded({extended  :true}));
 app.get("/", (req, res) => res.send("API is Working (Hotel Management)"));
 
 // API Routes
+//user
 app.use("/api/user", userRouter);
+//admin
+app.use("/api/admin", adminRouter);
+
 app.use("/api/hotels", hotelRouter);
 app.use("/api/rooms", roomRouter);
 app.use("/api/bookings", bookingRouter);

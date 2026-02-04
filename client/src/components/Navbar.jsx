@@ -124,7 +124,7 @@ const Navbar = () => {
             } transition-all`}
             onClick={() => (role !== "user" ? navigate("/owner") : setShowHotelReg(true))}
           >
-            {role !== "user" ? "Dashboard" : "List Your Hotel"}
+            {role === "admin" ? "Dashboard" : "Rooms"}
           </button>
         )}
       </div>
@@ -239,7 +239,7 @@ const Navbar = () => {
             className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer"
             onClick={() => (role !== "user" ? navigate("/owner") : setShowHotelReg(true))}
           >
-            {role !== "user" ? "Dashboard" : "List Your Hotel"}
+            {role === "admin" ? "Dashboard" : "Rooms"}
           </button>
         )}
         {!isAuthenticated ? (

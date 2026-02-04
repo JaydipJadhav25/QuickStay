@@ -3,18 +3,22 @@ import Navbar from '../../components/HotelOwner/Navbar';
 import SideBar from '../../components/HotelOwner/SideBar';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext.jsx';
+import useAuth from '../../context/useAuth.js';
 
 const Layout = () => {
-  const { isOwner, user } = useAppContext();
+  // const { isOwner, user } = useAppContext();
+
+   const  { isAuthenticated , role} = useAuth();
+
   const navigate = useNavigate(); // Using react-router-dom's navigate
 
   useEffect(() => {
-    // Redirect if not logged in or not a hotel owner
-    const token = localStorage.getItem('token');
-    if (!token || !user || !isOwner) {
+   
+
+    if (role !== "admin") {
       navigate('/');
     }
-  }, [user, isOwner, navigate]);
+  }, [isAuthenticated , navigate]);
 
   return (
     <div className="flex flex-col h-screen">
